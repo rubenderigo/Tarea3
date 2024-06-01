@@ -1,8 +1,6 @@
 module Tarea3 where
 
-
 import Prelude hiding ((++))
-
 
 ---------------------------------
 --Nombre 1	: Leandro Gugiato
@@ -35,7 +33,7 @@ sufijo p (x:xs)
 
 (++) :: [a] -> [a] -> [a]
 (++) [] k = k
-(++) (x:xs) k = x:(xs (++) k)
+(++) (x:xs) k = x:(xs ++ k)
 
 --3)
 {--
@@ -100,7 +98,7 @@ Dmt. por induccion en l1::[a]
 CB: (∀ l2::[a]) incluido (interseccion [] l2) l2 = True
  	-------------------------------------------------------------------------------
 	| incluido (interseccion [] l2) l2 = interseccion                             |                  
-	| incluido [] l2 = incluido				                                      |
+	| incluido [] l2 = incluido                                                   |
 	| True                                                                        |
 	-------------------------------------------------------------------------------
 
