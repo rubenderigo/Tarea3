@@ -50,8 +50,8 @@ CB: (∀p::(a− > Bool)) ((prefijo p []) ++ (sufijo p []) = [])
 PI: sea xs::[a]
 	H) (∀p::(a− > Bool)) ((prefijo p xs) ++ (sufijo p xs) = xs)
 	T) (∀x::a)(∀p::(a−> Bool)) ((prefijo p (x:xs)) ++ (sufijo p (x:xs)) = (x:xs))
-	Dmt. por casos en p::(a−>Bool)
-	Caso True: (∀x::a)(∀p::(a−>Bool)) ((prefijo p (x:xs)) ++ (sufijo p (x:xs)) = (x:xs))
+	Dmt. por casos en (p x)::Bool
+	Caso True: (prefijo p (x:xs)) ++ (sufijo p (x:xs)) = (x:xs)
 	-------------------------------------------------------------------------------
 	| (prefijo p (x:xs)) ++ (sufijo p (x:xs) = prefijo                            |
 	| x:(prefijo p xs) ++ (sufijo p (x:xs) = sufijo                               |
@@ -60,7 +60,7 @@ PI: sea xs::[a]
 	| x:xs                                                                        |
 	-------------------------------------------------------------------------------
 
-	Caso False: (∀x::a)(∀p::(a−>Bool)) ((prefijo p (x:xs)) ++ (sufijo p (x:xs)) = (x:xs))
+	Caso False: (prefijo p (x:xs)) ++ (sufijo p (x:xs)) = (x:xs)
 	-------------------------------------------------------------------------------
 	|  (prefijo p (x:xs)) ++ (sufijo p (x:xs)) = prefijo                          |
 	|  [] ++ (sufijo p (x:xs)) = ++                                               |
