@@ -172,8 +172,8 @@ Dmt por induccion de t::Tree
 CBL: esBinario (convertirEnBinario (L x)) = True
 	-------------------------------------------------------------
 	| esBinario (convertirEnBinario (L x)) = convertirEnBinario |
-	| esBinario (L x) = esBinario								|
-	| True														|
+	| esBinario (L x) = esBinario                               |
+	| True                                                      |
 	-------------------------------------------------------------
 
 PIU: sea g::Tree
