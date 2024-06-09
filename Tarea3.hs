@@ -40,12 +40,12 @@ sufijo p (x:xs)
 (∀ xs::[a]) (∀p::(a−>Bool)) ((prefijo p xs) ++ (sufijo p xs) = xs)
 Dmt. por induccion en l::[a]
 CB: (∀p::(a− > Bool)) ((prefijo p []) ++ (sufijo p []) = [])
-    -------------------------------------------------------------------------------
-    | (prefijo p []) ++ (sufijo p []) = prefijo                                   |
-    | [] ++ (sufijo p []) =  ++                                                   |
-    | sufijo p [] = sufijo                                                        |
-    | []                                                                          |
-    -------------------------------------------------------------------------------
+	-------------------------------------------------------------------------------
+	| (prefijo p []) ++ (sufijo p []) = prefijo                                   |
+	| [] ++ (sufijo p []) =  ++                                                   |
+	| sufijo p [] = sufijo                                                        |
+	| []                                                                          |
+	-------------------------------------------------------------------------------
 
 PI: sea xs::[a]
 	H) (∀p::(a− > Bool)) ((prefijo p xs) ++ (sufijo p xs) = xs)
@@ -107,12 +107,12 @@ PI: Sea xs::[a]
 	T) (∀ x::a)(∀ l2::[a]) incluido (interseccion (x:xs) l2) l2 = True
 	Dmt por Casos en (elem x ys)::Bool
 	Caso True: incluido (interseccion (x:xs) l2) l2 = True
-    -------------------------------------------------------------------------------
-    | incluido (interseccion (x:xs) l2) l2 = interseccion                         |
-    | incluido (x:(interseccion xs ys)) l2 = incluido                             |
-    | incluido (interseccion xs ys) l2 = H                                        |
-    | True                                                                        |
-    -------------------------------------------------------------------------------
+	-------------------------------------------------------------------------------
+	| incluido (interseccion (x:xs) l2) l2 = interseccion                         |
+	| incluido (x:(interseccion xs ys)) l2 = incluido                             |
+	| incluido (interseccion xs ys) l2 = H                                        |
+	| True                                                                        |
+	-------------------------------------------------------------------------------
 
 	Caso False: incluido (interseccion (x:xs) l2) l2 = True
 	-------------------------------------------------------------------------------
@@ -165,13 +165,42 @@ convertirEnBinario (B i s d) = B (convertirEnBinario i) s (convertirEnBinario d)
 
 --6)
 {--
+Por letra: L1. (∀t::Tree) esBinario t => esBinario (espejo t)
+
 (∀t::Tree) esBinario (convertirEnBinario t) = True
+Dmt por induccion de t::Tree
+CBL: esBinario (convertirEnBinario (L x)) = True
+	-------------------------------------------------------------
+	| esBinario (convertirEnBinario (L x)) = convertirEnBinario |
+	| esBinario (L x) = esBinario								|
+	| True														|
+	-------------------------------------------------------------
 
+PIU: sea g::Tree
+	H) esBinario (convertirEnBinario g) = True
+	T) (∀x::Int) esBinario (convertirEnBinario (U x g)) = True
+	------------------------------------------------------------------------------------------
+	| esBinario (convertirEnBinario (U x g)) = convertirEnBinario                            |
+	| esBinario (B (convertirEnBinario g) x (espejo (convertirEnBinario g))) = esBinario     |
+	| (esBinario (convertirEnBinario g)) && (esBinario (espejo (convertirEnBinario g))) = H  |
+	| True && (esBinario (espejo (convertirEnBinario g))) = L1                               |
+	| True && (esBinario (convertirEnBinario g)) = H                                         |
+	| True && True = &&                                                                      |
+	| True                                                                                   |
+	------------------------------------------------------------------------------------------
 
-
-
-
-
+PIB: sea i,d::Tree
+	H1) esBinario (convertirEnBinario i) = True
+	H2) esBinario (convertirEnBinario d) = True
+	T) (∀x::Int) esBinario (convertirEnBinario (B i x d)) = True
+	----------------------------------------------------------------------------------
+	| esBinario (convertirEnBinario (B i x d)) = convertirEnBinario                  |
+	| esBinario (B (convertirEnBinario i) s (convertirEnBinario d)) = esBinario      |
+	| (esBinario (convertirEnBinario i)) && (esBinario (convertirEnBinario d)) = H1  |
+	| True && (esBinario (convertirEnBinario d)) = H2                                |
+	| True && True = (&&)                                                            |
+	| True                                                                           |
+	----------------------------------------------------------------------------------
 
 LqqD
 --}
