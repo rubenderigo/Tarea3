@@ -183,8 +183,7 @@ PIU: sea g::Tree
 	| esBinario (convertirEnBinario (U x g)) = convertirEnBinario                            |
 	| esBinario (B (convertirEnBinario g) x (espejo (convertirEnBinario g))) = esBinario     |
 	| (esBinario (convertirEnBinario g)) && (esBinario (espejo (convertirEnBinario g))) = H  |
-	| True && (esBinario (espejo (convertirEnBinario g))) = L1                               |
-	| True && (esBinario (convertirEnBinario g)) = H                                         |
+	| True && (esBinario (espejo (convertirEnBinario g))) = H, L1                            |
 	| True && True = &&                                                                      |
 	| True                                                                                   |
 	------------------------------------------------------------------------------------------
